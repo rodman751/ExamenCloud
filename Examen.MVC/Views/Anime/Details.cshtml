@@ -1,0 +1,56 @@
+﻿@model Examen.Entidades.Anime
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Anime</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreAnime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NombreAnime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaEstreno)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaEstreno)
+        </dd>
+    </dl>
+    <h4>Tipo</h4>
+    <hr />
+    @if (Model.Tipo != null)
+    {
+        @foreach (var tipo in Model.Tipo)
+        {
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => tipo.NombreTipo)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => tipo.NombreTipo)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => tipo.TipoAudiencia)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => tipo.TipoAudiencia)
+                </dd>
+            </dl>
+        }
+    }
+    else
+    {
+        <p>No hay tipos asociados a este anime.</p>
+    }
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AnimeID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
